@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160617023604) do
     t.integer  "real_twitter_handle_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+
   end
 
 end
