@@ -1,10 +1,6 @@
-Sinatra
+Tweet^2
 =============
 
-Brought to you by Lighthouse Labs
+By _Monica Mow_, _Tana Jukes_, and _William Young_
 
-## Getting Started
-
-1. `bundle install`
-2. `shotgun -p 3000 -o 0.0.0.0`
-3. Visit `http://localhost:3000/` in your browser
+Tweet Squared is a game where two tweets are displayed to a user, one is from a real celebrity user account, and one is from a spoof account. The user must attempt to guess which tweet the real celebrity sent.
