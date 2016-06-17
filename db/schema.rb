@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20160617023604) do
   end
 
   create_table "tweets", force: :cascade do |t|
-    t.integer  "account_id"
+    t.integer  "twitter_handle_id"
     t.string   "content"
     t.datetime "created_at"
     t.datetime "updated_at"
