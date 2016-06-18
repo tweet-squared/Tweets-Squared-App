@@ -1,5 +1,8 @@
 <h1>Topics</h1>
 
 <% @topics.each do |topic| %>
-  <p><%= topic.topic %></p>
+  <p>
+    <a href="/topics/<%= topic.id %>"><%= topic.topic %></a>
+  </p>
 <% end %>
+
