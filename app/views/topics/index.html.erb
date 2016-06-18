@@ -1,0 +1,31 @@
+<div>
+  <div>
+    <h1>Tweet&#0178</h1>
+  </div>
+  <hr>
+  <div>
+    <a href="/topics/all">
+      <div>
+        <h3>Start game</h3>
+      </div>
+    </a>
+  </div>
+  <div>
+    <h2>Or, Select a topic!</h2>
+    <div>
+      <ul>
+        <% @topics.each do |topic| %>
+          <li>
+            <div>
+              <a href="/topics/<%=topic.id%>">
+                <div>
+                  <%=topic.topic%>
+                </div>
+              </a>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
