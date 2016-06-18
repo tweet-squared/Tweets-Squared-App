@@ -16,6 +16,7 @@ namespace :generate do
   desc 'Generates numbered tweets for every TwitterHandle in the database'
   task :tweets do
     TwitterHandle.all.each do |handle|
+      handle.tweets.destroy_all
       12.times do |number|
         handle.tweets.create(content: "@#{handle.twitter_handle} tweet ##{number}")
       end
