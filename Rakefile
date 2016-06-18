@@ -11,3 +11,14 @@ namespace :db do
   end
 end
 
+namespace :generate do
+  require_relative "config/environment"
+  desc 'Generates numbered tweets for every TwitterHandle in the database'
+  task :tweets do
+    TwitterHandle.all.each do |handle|
+      12.times do |number|
+        handle.tweets.create(content: "@#{handle.twitter_handle} tweet ##{number}")
+      end
+    end
+  end
+end
