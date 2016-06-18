@@ -1,4 +1,7 @@
 # Homepage (Root path)
 get '/' do
-  erb :index
+  erb :'/topics/index'
 end
+
+
+
