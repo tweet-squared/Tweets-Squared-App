@@ -1,4 +1,8 @@
 # Homepage (Root path)
 get '/' do
-  erb :index
+  @topics = Topic.all.order(:topic)
+  erb :'/topics/index'
 end
+
+
+
