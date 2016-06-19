@@ -54,7 +54,7 @@ namespace :twitter do
       handle = listing.twitter_handle
       user_tweets = twitter_client.user_timeline("#{handle}")
       user_tweets.each do |tweet|
-        listing.tweets.create(content: tweet.full_text)
+        listing.tweets.create(content: tweet.full_text, media_url: tweet.media.count > 0 ? tweet.media.sample.media_url.to_s : nil)
       end
     end
   end
