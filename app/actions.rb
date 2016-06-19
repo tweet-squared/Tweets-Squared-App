@@ -4,6 +4,7 @@ get '/' do
 end
 
 get '/topics/:id' do |id|
+  session[:topic] = id
   @topics = Topic.all
   unless id == "all"
     @topics = [Topic.find(id)]
@@ -24,5 +25,5 @@ get '/verify/:id' do |id|
   if tweet.twitter_handle.real_twitter_handle_id == nil
     session[:score] = (session[:score] || 0) + 1
   end
-  redirect '/topics/#{tweet.twitter_handle.topic.id}'
+  redirect "/topics/#{session[:topic] || "all"}"
 end
