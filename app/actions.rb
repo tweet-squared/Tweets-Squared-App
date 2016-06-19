@@ -12,3 +12,8 @@ get '/topics/:id' do |id|
   @fake = TwitterHandle.where("real_twitter_handle_id = ?", [@real.twitter_handle.id]).sample.tweets.sample
   erb :'topics/show.html'
 end
+
+get '/topics' do
+  @topics = Topic.all.order(:topic)
+  erb :'/topics/index.html'
+end
