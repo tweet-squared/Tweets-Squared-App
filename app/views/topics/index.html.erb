@@ -1,27 +1,39 @@
-<<<<<<< 47e9728ca69a36595cfffbe2cb623d6baaa0399b
 <div>
-=======
-<!DOCTYPE html>
-<head>
-</head>
-<body>
-  <div>
->>>>>>> Add William's branch for home and topics route
+
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div>
     <h1>Tweet&#0178</h1>
   </div>
+
   <hr>
+
   <div>
     <a href="/topics/all">
       <div>
         <h3>Start game</h3>
+        <i class="large material-icons">play_circle_outline</i>
       </div>
     </a>
   </div>
+
   <div>
+
     <h2>Or, select a topic!</h2>
+
     <div>
       <ul>
+      <div class="collection with-header">
+        <div class="collection-header"><h3>Or, Select a topic!</h3></div>
         <% @topics.each do |topic| %>
           <li>
             <div>
@@ -33,7 +45,11 @@
             </div>
           </li>
         <% end %>
+        </div>
       </ul>
     </div>
+
   </div>
+
 </div>
+
