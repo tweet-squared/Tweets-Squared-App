@@ -11,10 +11,14 @@ namespace :db do
   end
 end
 
-namespace :generate do
+desc 'Global namespace that requires config/environment'
+task :get_env do
   require_relative "config/environment"
+end
+
+namespace :generate do
   desc 'Generates numbered tweets for every TwitterHandle in the database'
-  task :tweets do
+  task :tweets => :get_env do
     Tweet.destroy_all
     TwitterHandle.all.each do |handle|
       12.times do |number|
