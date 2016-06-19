@@ -13,9 +13,9 @@
   </div>
   <div>
     <div class="collection with-header">
-      <div class="collection-header center"><h4>Or, select a topic!</h4></div>
+      <div class="collection-header"><h4>Or, select a topic!</h4></div>
       <% @topics.each do |topic| %>
-        <a href="/topics/<%=topic.id%>" class="collection-item">
+        <a href="/topics/<%=topic.topic%>" class="collection-item">
           <%=topic.topic%>
         </a>
       <% end %>
