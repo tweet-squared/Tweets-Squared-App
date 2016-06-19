@@ -12,10 +12,10 @@
     <div id="TwitterUser">
       <%=@real.twitter_handle.twitter_handle%>
     </div>
-    <div>
+    <div class="ui-grid-a">
       <% tweets = [@real,@fake].shuffle %>
-      <div id="LeftTweetContainer">
-        <a href="/verify/<%=tweets[0].id%>">
+      <div id="LeftTweetContainer" class="ui-block-a">
+        <a href="/verify/<%=tweets[0].id%>" data-transition="flip">
           <div id="LeftTweet">
             <p>
               <%=tweets[0].content%>
@@ -23,8 +23,8 @@
           </div>
         </a>
       </div>
-      <div id="RightTweetContainer">
-        <a href="/verify/<%=tweets[1].id%>">
+      <div id="RightTweetContainer" class="ui-block-b">
+        <a href="/verify/<%=tweets[1].id%>" data-transition="flip">
           <div id="RightTweet">
             <p>
               <%=tweets[1].content%>
