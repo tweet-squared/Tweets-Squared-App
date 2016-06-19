@@ -11,21 +11,13 @@
     </a>
   </div>
   <div>
-    <h2>Or, select a topic!</h2>
-    <div>
-      <ul>
-        <% @topics.each do |topic| %>
-          <li>
-            <div>
-              <a href="/topics/<%=topic.topic%>">
-                <div>
-                  <%=topic.topic%>
-                </div>
-              </a>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+    <div class="collection with-header">
+      <div class="collection-header"><h4>Or, select a topic!</h4></div>
+      <% @topics.each do |topic| %>
+        <a href="/topics/<%=topic.id%>" class="collection-item">
+          <%=topic.topic%>
+        </a>
+      <% end %>
     </div>
   </div>
 </div>
