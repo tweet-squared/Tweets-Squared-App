@@ -27,3 +27,7 @@ get '/verify/:id' do |id|
   end
   redirect "/topics/#{session[:topic] || "all"}"
 end
+
+get '/topics/:id' do
+  erb :'/topics/all.html'
+end
