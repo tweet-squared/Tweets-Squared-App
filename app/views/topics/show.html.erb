@@ -1,0 +1,37 @@
+<div>
+  <div>
+    <h1>Tweet&#0178</h1>
+  </div>
+  <hr>
+  <div>
+    <div id="Instructions">
+      <p>
+        Select the tweet you think came from the account below
+      </p>
+    </div>
+    <div id="TwitterUser">
+      <%=@real.twitter_handle.twitter_handle%>
+    </div>
+    <div>
+      <% tweets = [@real,@fake].shuffle %>
+      <div id="LeftTweetContainer">
+        <a href="/verify/<%=tweets[0].id%>">
+          <div id="LeftTweet">
+            <p>
+              <%=tweets[0].content%>
+            </p>
+          </div>
+        </a>
+      </div>
+      <div id="RightTweetContainer">
+        <a href="/verify/<%=tweets[1].id%>">
+          <div id="RightTweet">
+            <p>
+              <%=tweets[1].content%>
+            </p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
