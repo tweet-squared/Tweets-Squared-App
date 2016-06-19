@@ -18,7 +18,7 @@ get '/topics' do
   erb :'/topics/index.html'
 end
 
-get '/verify/:id' do
+get '/verify/:id' do |id|
   tweet = Tweet.find(id)
   session[:times] = (session[:times] || 0) + 1
   if tweet.twitter_handle.real_twitter_handle_id == nil
