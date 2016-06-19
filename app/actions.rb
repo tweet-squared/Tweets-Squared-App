@@ -32,3 +32,7 @@ get '/topics/all' do
   erb :'/topics/all.html'
 >>>>>>> Add materialize-type cards to /topics/all
 end
+
+get '/topics/:id' do
+  erb :'/topics/all.html'
+end
