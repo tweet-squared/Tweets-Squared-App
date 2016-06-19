@@ -1,18 +1,33 @@
 <div>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="sass.html">Sass</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li>
+      </ul>
+    </div>
+  </nav>
+
   <div>
     <h1>Tweet&#0178</h1>
   </div>
+
   <hr>
+
   <div>
     <a href="/topics/all">
       <div>
         <h3>Start game</h3>
+        <i class="large material-icons">play_circle_outline</i>
       </div>
     </a>
   </div>
+
   <div>
     <div class="collection with-header">
-        <div class="collection-header"><h2>Or, Select a topic!</h2></div>
+        <div class="collection-header"><h3>Or, Select a topic!</h3></div>
         <% @topics.each do |topic| %>
             <div>
               <a href="/topics/<%=topic.id%>" class="collection-item">
@@ -22,4 +37,5 @@
         <% end %>
     </div>
   </div>
+  
 </div>
