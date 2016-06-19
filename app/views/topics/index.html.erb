@@ -1,12 +1,4 @@
-<<<<<<< 345c175045b5fe854df6e6722c3da10114ed755a
 <div>
-=======
-<!DOCTYPE html>
-<head>
-</head>
-<body>
-  <div>
->>>>>>> Add William's branch for home and topics route
   <div>
     <h1>Tweet&#0178</h1>
   </div>
@@ -19,21 +11,15 @@
     </a>
   </div>
   <div>
-    <h2>Or, select a topic!</h2>
-    <div>
-      <ul>
+    <div class="collection with-header">
+        <div class="collection-header"><h2>Or, Select a topic!</h2></div>
         <% @topics.each do |topic| %>
-          <li>
             <div>
-              <a href="/topics/<%=topic.id%>">
-                <div>
+              <a href="/topics/<%=topic.id%>" class="collection-item">
                   <%=topic.topic%>
-                </div>
               </a>
             </div>
-          </li>
         <% end %>
-      </ul>
     </div>
   </div>
 </div>
