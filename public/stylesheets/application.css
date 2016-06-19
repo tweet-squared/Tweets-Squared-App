@@ -1,3 +1,10 @@
 h1 {
   font-weight: 600;
+  margin: 0;
+  line-height: 100px;
+}
+
+nav {
+  height: 100px;
+  line-height: 100px;
 }
