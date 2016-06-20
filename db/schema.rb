@@ -11,10 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620181420) do
+ActiveRecord::Schema.define(version: 20160620182724) do
 
   create_table "game_counts", force: :cascade do |t|
     t.integer "times_played"
+    t.integer "score"
+    t.integer "total"
   end
 
   create_table "topics", force: :cascade do |t|
