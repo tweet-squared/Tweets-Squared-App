@@ -1,31 +1,19 @@
 <div>
-  <div>
-    <h1>Tweet&#0178</h1>
-  </div>
-  <hr>
-  <div>
-    <a href="/topics/all">
-      <div>
-        <h3>Start game</h3>
-      </div>
-    </a>
+  <div class="center">
+    <h5>
+      <a href="/topics/all" class="waves-effect waves-light btn-large">
+        Start game
+      </a>
+    </h5>
   </div>
   <div>
-    <h2>Or, select a topic!</h2>
-    <div>
-      <ul>
-        <% @topics.each do |topic| %>
-          <li>
-            <div>
-              <a href="/topics/<%=topic.id%>">
-                <div>
-                  <%=topic.topic%>
-                </div>
-              </a>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+    <div class="collection with-header">
+      <div class="collection-header center"><h4>Or, select a topic!</h4></div>
+      <% @topics.each do |topic| %>
+        <a href="/topics/<%=topic.topic%>" class="collection-item">
+          <%=topic.topic%>
+        </a>
+      <% end %>
     </div>
   </div>
 </div>

@@ -7,6 +7,13 @@
     See: http://necolas.github.com/normalize.css/
   -->
   <link rel="stylesheet" href="/stylesheets/normalize.css">
+
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+  <!-- google icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
   <!--
     application.css is where you put your styles
   -->
@@ -15,12 +22,19 @@
   <link rel="canonical" href="/">
 
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
   <script src="/javascript/application.js"></script>
   <script src="/javascript/widgets.js"></script>
 
   <title></title>
 </head>
 <body>
+  <nav>
+    <div class="nav-wrapper">
+      <div class="brand-logo center">Tweets&#0178</div>
+    </div>
+  </nav>
   <%= yield %>
 </body>
 </html>
