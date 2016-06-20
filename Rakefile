@@ -35,6 +35,7 @@ namespace :twitter do
   desc 'Load Twitter config parameters as environment variables from Dotenv'
   task :dotenv => :get_env do
     @TWITTER_ENV = Dotenv.load.select { |key, _| key.match(/TWITTER/) }
+    @TWITTER_ENV.merge(ENV.select { |key,_| key.match(/TWITTER/) })
   end
 
   desc 'Configure Twitter client'
