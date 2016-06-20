@@ -35,6 +35,34 @@ get '/topics' do
   end
 end
 
+##########
+# draft logic for showing tweets for one real account only
+##########
+get '/topics/:name/:twitter_handle' do |name, twitter_handle|
+  @show_menu = true
+  session[:topic] = name
+  @topics = Topic.all
+  @real_accounts = TwitterHandle.where("real_twitter_handle_id is null")
+  unless name == "all"
+    @topics = [Topic.find_by(topic: name)]
+  end
+  @real = @real_accounts.where("twitter_handle = ?", [twitter_handle]).sample.tweets.sample
+  @fake = TwitterHandle.where("real_twitter_handle_id = ?", [@real.twitter_handle.id]).sample.tweets.sample
+  if params['json'].nil?
+    erb :'topics/show.html'
+  else
+    {
+      real: @real.content,
+      fake: @fake.content,
+      topic: id,
+      real_handle: @real.twitter_handle.twitter_handle,
+      fake_handle: @fake.twitter_handle.twitter_handle,
+      tweet_topic: @real.twitter_handle.topic.topic,
+    }.to_json
+  end
+end
+##########
+
 get '/verify/:id' do |id|
   tweet = Tweet.find(id)
   session[:times] = (session[:times] || 0) + 1

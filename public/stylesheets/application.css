@@ -42,3 +42,8 @@
 .collapsible-body:hover {
   background-color: #ddd;
 }
+
+.collapsible-body a {
+  color: #ee6e73;
+  padding: 0.2em;
+}
