@@ -37,22 +37,24 @@ namespace :twitter do
     @TWITTER_ENV = Dotenv.load.select { |key, _| key.match(/TWITTER/) }
   end
 
-  desc 'Pull Tweets'
-  task :pull_tweets => :dotenv do
-    # Clear the Tweets table before populating
-    Tweet.destroy_all
-
-    # Configure Twitter connection
+  desc 'Configure Twitter client'
+  task :client_config => :dotenv do
     config = {
       consumer_key: @TWITTER_ENV['TWITTER_CONSUMER_KEY'],
       consumer_secret: @TWITTER_ENV['TWITTER_CONSUMER_SECRET']
     }
-    twitter_client = Twitter::REST::Client.new(config)
+    @twitter_client = Twitter::REST::Client.new(config)
+  end
 
-    # Import tweets for all TwitterHandles and add them to the Tweets table
+  # Import tweets for all TwitterHandles and add them to the Tweets table
+  desc 'Pull Tweets'
+  task :pull_tweets => :client_config do
+    # Clear the Tweets table before populating
+    Tweet.destroy_all
+
     TwitterHandle.all.each do |listing|
       handle = listing.twitter_handle
-      user_tweets = twitter_client.user_timeline("#{handle}")
+      user_tweets = @twitter_client.user_timeline("#{handle}")
       user_tweets.each do |tweet|
         listing.tweets.create(content: tweet.full_text, media_url: tweet.media.count > 0 ? tweet.media.sample.media_url.to_s : nil)
       end
