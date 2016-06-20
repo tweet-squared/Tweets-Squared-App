@@ -79,4 +79,38 @@ namespace :twitter do
       sleep error.rate_limit.reset_in + 1
     end
   end
+
+  # Import up to 3200 tweets (the maximum allowed) for each TwitterHandle and add them to the Tweets table
+  desc 'Pull 3200 tweets for each account listed'
+  task :pull_3200_tweets => :client_config do
+    # Clear the Tweets table before populating
+    Tweet.destroy_all
+
+    # Helper methods
+    def collect_with_max_id(collection=[], max_id=nil, &block)
+      response = yield(max_id)
+      collection += response
+      response.empty? ? collection.flatten : collect_with_max_id(collection, response.last.id - 1, &block)
+    end
+
+    def @twitter_client.get_all_tweets(user)
+      collect_with_max_id do |max_id|
+        options = {count: 200, include_rts: true}
+        options[:max_id] = max_id unless max_id.nil?
+        user_timeline(user, options)
+      end
+    end
+
+    # Loop through all TwitterHandles and get the maximum number of tweets
+    begin
+      TwitterHandle.all.each do |listing|
+        handle = listing.twitter_handle
+        @twitter_client.get_all_tweets("#{handle}").each do |tweet|
+          listing.tweets.create(content: tweet.full_text, media_url: tweet.media.count > 0 ? tweet.media.sample.media_url.to_s : nil)
+        end
+      end
+    rescue Twitter::Error::TooManyRequests => error
+      sleep error.rate_limit.reset_in + 1
+    end
+  end
 end
