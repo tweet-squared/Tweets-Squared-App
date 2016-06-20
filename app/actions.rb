@@ -25,5 +25,15 @@ get '/verify/:id' do |id|
   if tweet.twitter_handle.real_twitter_handle_id == nil
     session[:score] = (session[:score] || 0) + 1
   end
-  redirect "/topics/#{session[:topic] || "all"}"
+  if session[:times] >= 10
+    redirect "/game_over"
+  else
+    redirect "/topics/#{session[:topic] || "all"}"
+  end
+end
+
+get '/game_over' do
+  output = erb :'/game_over.html'
+  session.clear
+  output
 end
