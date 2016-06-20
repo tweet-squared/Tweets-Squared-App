@@ -4,6 +4,7 @@ get '/' do
 end
 
 get '/topics/:name' do |name|
+  @show_menu = true
   session[:topic] = name
   @topics = Topic.all
   unless name == "all"

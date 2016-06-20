@@ -7,6 +7,13 @@
     See: http://necolas.github.com/normalize.css/
   -->
   <link rel="stylesheet" href="/stylesheets/normalize.css">
+
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+
+  <!-- google icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  
   <!--
     application.css is where you put your styles
   -->
@@ -14,13 +21,42 @@
 
   <link rel="canonical" href="/">
 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/javascript/application.js"></script>
+  <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/css/materialize.min.css">
+  <!-- Compiled and minified JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js"></script>
+
   <script src="/javascript/widgets.js"></script>
+
+  <script src="/javascript/application.js"></script>
 
   <title></title>
 </head>
 <body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/topics"><div class="brand-logo center">Tweets&#0178</div></a>
+      <% if @show_menu %>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/topics/Celebrities">Celebrities</a></li>
+          <li><a href="/topics/Companies">Companies</a></li>
+          <li><a href="/topics/News">News</a></li>
+          <li><a href="/topics/Political">Political</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="/topics/Celebrities">Celebrities</a></li>
+          <li><a href="/topics/Companies">Companies</a></li>
+          <li><a href="/topics/News">News</a></li>
+          <li><a href="/topics/Political">Political</a></li>
+        </ul>
+      <% end %>
+    </div>
+  </nav>
   <%= yield %>
 </body>
 </html>
