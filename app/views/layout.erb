@@ -37,6 +37,26 @@
   <title></title>
 </head>
 <body>
+  <nav>
+    <div class="nav-wrapper">
+      <a href="/topics"><div class="brand-logo center">Tweets&#0178</div></a>
+      <% if @show_menu %>
+        <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
+          <li><a href="/topics/Celebrities">Celebrities</a></li>
+          <li><a href="/topics/Companies">Companies</a></li>
+          <li><a href="/topics/News">News</a></li>
+          <li><a href="/topics/Political">Political</a></li>
+        </ul>
+        <ul class="side-nav" id="mobile-demo">
+          <li><a href="/topics/Celebrities">Celebrities</a></li>
+          <li><a href="/topics/Companies">Companies</a></li>
+          <li><a href="/topics/News">News</a></li>
+          <li><a href="/topics/Political">Political</a></li>
+        </ul>
+      <% end %>
+    </div>
+  </nav>
   <%= yield %>
 </body>
 </html>
