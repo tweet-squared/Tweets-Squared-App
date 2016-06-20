@@ -60,4 +60,23 @@ namespace :twitter do
       end
     end
   end
+
+  # Import 200 tweets for each TwitterHandle and add them to the Tweets table
+  desc 'Pull 200 tweets for each account listed'
+  task :pull_200_tweets => :client_config do
+    # Clear the Tweets table before populating
+    Tweet.destroy_all
+
+    begin
+      TwitterHandle.all.each do |listing|
+        handle = listing.twitter_handle
+        user_tweets = @twitter_client.user_timeline("#{handle}", {count: 200})
+        user_tweets.each do |tweet|
+          listing.tweets.create(content: tweet.full_text, media_url: tweet.media.count > 0 ? tweet.media.sample.media_url.to_s : nil)
+        end
+      end
+    rescue Twitter::Error::TooManyRequests => error
+      sleep error.rate_limit.reset_in + 1
+    end
+  end
 end
