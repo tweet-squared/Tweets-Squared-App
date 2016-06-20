@@ -27,7 +27,11 @@ end
 
 get '/topics' do
   @topics = Topic.all.order(:topic)
-  erb :'/topics/index.html'
+  if params['json'].nil?
+    erb :'/topics/index.html'
+  else
+    Topic.all.to_a.to_json
+  end
 end
 
 get '/verify/:id' do |id|
