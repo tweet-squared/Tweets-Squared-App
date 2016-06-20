@@ -41,6 +41,7 @@ end
 get '/topics/:name/:twitter_handle' do |name, twitter_handle|
   @show_menu = true
   session[:topic] = name
+  session[:handle] = twitter_handle
   @topics = Topic.all
   @real_accounts = TwitterHandle.where("real_twitter_handle_id is null")
   unless name == "all"
@@ -72,6 +73,9 @@ get '/verify/:id' do |id|
   if session[:times] >= 10
     redirect "/game_over"
   else
+    if session[:handle]
+      redirect "/topics/#{session[:topic]}/#{session[:handle]}"
+    end
     redirect "/topics/#{session[:topic] || "all"}"
   end
 end
