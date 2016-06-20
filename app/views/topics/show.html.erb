@@ -5,32 +5,44 @@
         Select the tweet you think came from the account below
       </p>
     </div>
+    <h4>Score <%=session[:score] || 0%>/<%=session[:times] || 0%></h4>
     <div id="TwitterUser">
       <%=@real.twitter_handle.twitter_handle%>
     </div>
-    <div>
+    <div class="row">
       <% tweets = [@real,@fake].shuffle %>
-      <div id="LeftTweetContainer">
+      <div class="col s12 m6">
         <a href="/verify/<%=tweets[0].id%>">
-          <div id="LeftTweet">
+          <div class="card hoverable">
+            <% if tweets[0].media_url %>
+              <div class="card-image">
+                <img src="<%=tweets[0].media_url%>">
+              </div>
+            <% end %>
+            <div class="card-content">
             <p>
               <%=tweets[0].content%>
             </p>
           </div>
+          </div>
         </a>
       </div>
-      <div id="RightTweetContainer">
+      <div class="col s12 m6">
         <a href="/verify/<%=tweets[1].id%>">
-          <div id="RightTweet">
+          <div class="card hoverable">
+            <% if tweets[1].media_url %>
+              <div class="card-image">
+                <img src="<%=tweets[1].media_url%>">
+              </div>
+            <% end %>
+            <div class="card-content">
             <p>
               <%=tweets[1].content%>
             </p>
           </div>
+          </div>
         </a>
       </div>
-    </div>
-    <div>
-      <h4>Score <%=session[:score] || 0%>/<%=session[:times] || 0%></h4>
-    </div>
   </div>
+</div>
 </div>
