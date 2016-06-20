@@ -11,12 +11,27 @@ get '/topics/:name' do |name|
   end
   @real = @topics.sample.twitter_handles.where("real_twitter_handle_id is null").sample.tweets.sample
   @fake = TwitterHandle.where("real_twitter_handle_id = ?", [@real.twitter_handle.id]).sample.tweets.sample
-  erb :'topics/show.html'
+  if params['json'].nil?
+    erb :'topics/show.html'
+  else
+    {
+      real: @real.content,
+      fake: @fake.content,
+      topic: id,
+      real_handle: @real.twitter_handle.twitter_handle,
+      fake_handle: @fake.twitter_handle.twitter_handle,
+      tweet_topic: @real.twitter_handle.topic.topic,
+    }.to_json
+  end
 end
 
 get '/topics' do
   @topics = Topic.all.order(:topic)
-  erb :'/topics/index.html'
+  if params['json'].nil?
+    erb :'/topics/index.html'
+  else
+    Topic.all.to_a.to_json
+  end
 end
 
 get '/verify/:id' do |id|
