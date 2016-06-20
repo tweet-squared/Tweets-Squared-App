@@ -1,3 +1,11 @@
 #game-play-header {
   text-align: center;
 }
+
+#topic-specific-score {
+  font-weight: bold;
+}
+
+#twitter-user {
+  font-weight: bold;
+}

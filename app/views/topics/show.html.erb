@@ -4,11 +4,11 @@
       <div id="instructions" class="card-panel teal lighten-2">
           Guess which tweet belongs to:
           <div id="twitter-user">
-            <%=@real.twitter_handle.twitter_handle%>
+            @<%=@real.twitter_handle.twitter_handle%>
           </div>          
       </div>
       <div id="topic-specific-score" class="card-panel teal lighten-2">
-          Score <%=session[:score] || 0%>/<%=session[:times] || 0%>
+          Score: <%=session[:score] || 0%>/<%=session[:times] || 0%>
       </div>
     </div>
     <div class="row">
