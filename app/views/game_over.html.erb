@@ -1,8 +1,19 @@
-<div><h1>GAME OVER WOMP WOMP WOMP :(</h1></div>
-<div><h2>Final Score: <%=session[:score] || 0%>/<%=session[:times] || 0%></h2></div>
+<div id="game-over-header" class="col s12 m6">
+  <div id="game-over-text" class="card-panel teal lighten-2">
+    Game Over 
+    <div id="final-score">
+      Final Score: <%=session[:score] || 0%>/<%=session[:times] || 0%>
+    </div>           
+  </div>
 
-<div><a href="/topics">Play Again</a></div>
+  <div id="play-again">
+    <p>
+        <a href="/topics" class="waves-effect waves-light btn"><i class="material-icons right">replay</i>Play Again</a>
+    </p>
+  </div>
 
-<a class="twitter-share-button"
-  href="https://twitter.com/intent/tweet?text=I%20just%20scored<%=session[:score] || 0%>/<%=session[:times] || 0%>%20on%20the%20Tweet&#0178%20game!"
-  data-size="large"></a>
+  <div id="twitter-share-button">
+    <a class="twitter-share-button" href="https://twitter.com/intent/tweet?text=I%20just%20scored%20<%=session[:score] || 0%>/<%=session[:times] || 0%>%20on%20the%20Tweets&#0178%20game!" data-size="large"></a>
+  </div>
+
+</div>
