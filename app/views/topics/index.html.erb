@@ -9,15 +9,37 @@
   <div>
     <div class="collection with-header">
       <div class="collection-header center"><h4>Or, select a topic!</h4></div>
+
       <% @topics.each do |topic| %>
-        <a href="/topics/<%=topic.topic%>" class="collection-item">
-          <%=topic.topic%>
-          <span class="badge">
-            <%=topic.twitter_handles.where(real_twitter_handle_id: nil).count%>
-            Handles
-          </span>
-        </a>
+
+        <ul class="collection-item collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header">
+              <%=topic.topic%>
+              <span class="badge">
+                <%=topic.twitter_handles.where(real_twitter_handle_id: nil).count%>
+                Handles
+              </span>
+            </div>
+
+            <div class="sub-options collapsible-body">
+              <a href="/topics/<%=topic.topic%>">
+                Play all
+              </a>
+            </div>
+
+            <% topic.twitter_handles.where("real_twitter_handle_id is null").each do |handle| %>
+              <div class="sub-options collapsible-body">
+                <a href="/topics/<%=topic.topic%>/<%=handle.twitter_handle%>">
+                  <%= handle.twitter_handle %>
+                </a>
+              </div>
+            <% end %>
+          </li>
+        </ul>
+
       <% end %>
+
     </div>
   </div>
 
