@@ -11,7 +11,7 @@
       <div class="collection-header center"><h4>Or, select a topic!</h4></div>
       <% @topics.each do |topic| %>
         <a href="/topics/<%=topic.topic%>" class="collection-item">
-          <%=topic.topic%>
+          <%=topic.topic%> (<%=topic.twitter_handles.count%>)
         </a>
       <% end %>
     </div>
