@@ -1,5 +1,4 @@
 <div>
-  <div>
     <div id="game-play-header" class="col s12 m6">
       <div id="instructions" class="card-panel teal lighten-2">
           Guess which tweet belongs to:
@@ -11,8 +10,10 @@
           Score: <%=session[:score] || 0%>/<%=session[:times] || 0%>
       </div>
     </div>
+
     <div class="row">
       <% tweets = [@real,@fake].shuffle %>
+
       <div class="col s12 m6">
         <a href="/verify/<%=tweets[0].id%>">
           <div class="card hoverable">
@@ -29,6 +30,7 @@
           </div>
         </a>
       </div>
+
       <div class="col s12 m6">
         <a href="/verify/<%=tweets[1].id%>">
           <div class="card hoverable">
@@ -45,6 +47,8 @@
           </div>
         </a>
       </div>
-  </div>
+
+    </div>
+
 </div>
-</div>
+
