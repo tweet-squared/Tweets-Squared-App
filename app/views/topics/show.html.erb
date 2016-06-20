@@ -1,12 +1,14 @@
 <div>
   <div>
-    <div id="Instructions">
+    <div id="instructions">
       <p>
         Select the tweet you think came from the account below
       </p>
     </div>
+    <div id="topic-specific-score">
     <h4>Score <%=session[:score] || 0%>/<%=session[:times] || 0%></h4>
-    <div id="TwitterUser">
+    </div>
+    <div id="twitter-user">
       <%=@real.twitter_handle.twitter_handle%>
     </div>
     <div class="row">
@@ -16,11 +18,11 @@
           <div class="card hoverable">
             <% if tweets[0].media_url %>
               <div class="card-image">
-                <img src="<%=tweets[0].media_url%>">
+                <img id="left-tweet-img" src="<%=tweets[0].media_url%>">
               </div>
             <% end %>
             <div class="card-content">
-            <p>
+            <p id="left-tweet">
               <%=tweets[0].content%>
             </p>
           </div>
@@ -32,11 +34,11 @@
           <div class="card hoverable">
             <% if tweets[1].media_url %>
               <div class="card-image">
-                <img src="<%=tweets[1].media_url%>">
+                <img id="right-tweet-img" src="<%=tweets[1].media_url%>">
               </div>
             <% end %>
             <div class="card-content">
-            <p>
+            <p id="right-tweet">
               <%=tweets[1].content%>
             </p>
           </div>
