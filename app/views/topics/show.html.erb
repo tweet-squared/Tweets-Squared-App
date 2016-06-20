@@ -1,7 +1,6 @@
 <div>
 
-
-  <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
+<!--   <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
     <a class="waves-effect waves-light btn red">Topics</a>
     <ul>
       <li><a href="/topics/Celebrities" class="waves-effect waves-light btn red">Celebrities</a></li>
@@ -9,7 +8,7 @@
       <li><a href="/topics/News" class="waves-effect waves-light btn green">News</a></li>
       <li><a href="/topics/Political" class="waves-effect waves-light btn blue">Political</a></li>
     </ul>
-  </div>
+  </div> -->
 
     <div id="game-play-header" class="col s12 m6">
       <div id="instructions" class="card-panel teal lighten-2">
@@ -19,8 +18,16 @@
           </div>          
       </div>
       <div id="topic-specific-score" class="card-panel teal lighten-2">
-          Score: <%=session[:score] || 0%>/<%=session[:times] || 0%>
+          Score: <%=session[:score] || 0%>/<%=session[:times] || 0%>          
       </div>
+
+      <div class="dropdown">
+        <span>Mouse over me</span>
+        <div class="dropdown-content">
+          <p>Hello World!</p>
+        </div>
+      </div>
+
     </div>
 
     <div class="row">
