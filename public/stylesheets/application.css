@@ -25,3 +25,20 @@
 #twitter-share-button {
   text-align: center;
 }
+
+.collapsible-header {
+  color: #26a69a;
+}
+
+.collapsible-header:hover {
+  background-color: #ddd;
+}
+
+.collapsible-body {
+  color: #ee6e73;
+  padding: 0.2em;
+}
+
+.collapsible-body:hover {
+  background-color: #ddd;
+}
