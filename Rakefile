@@ -97,20 +97,22 @@ namespace :twitter do
       collect_with_max_id do |max_id|
         options = {count: 200, include_rts: true}
         options[:max_id] = max_id unless max_id.nil?
+        begin
         user_timeline(user, options)
+        rescue Twitter::Error::TooManyRequests => error
+          puts "sleeping until #{error.rate_limit.reset_in + 1} due to TooManyRequests"
+          sleep error.rate_limit.reset_in + 1
+          retry
+        end
       end
     end
 
     # Loop through all TwitterHandles and get the maximum number of tweets
-    begin
-      TwitterHandle.all.each do |listing|
-        handle = listing.twitter_handle
-        @twitter_client.get_all_tweets("#{handle}").each do |tweet|
-          listing.tweets.create(content: tweet.full_text, media_url: tweet.media.count > 0 ? tweet.media.sample.media_url.to_s : nil)
-        end
+    TwitterHandle.all.each do |listing|
+      handle = listing.twitter_handle
+      @twitter_client.get_all_tweets("#{handle}").each do |tweet|
+        listing.tweets.create(content: tweet.full_text, media_url: tweet.media.count > 0 ? tweet.media.sample.media_url.to_s : nil)
       end
-    rescue Twitter::Error::TooManyRequests => error
-      sleep error.rate_limit.reset_in + 1
     end
   end
 end
