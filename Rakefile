@@ -21,6 +21,7 @@ namespace :generate do
   task :tweets => :get_env do
     Tweet.destroy_all
     TwitterHandle.all.each do |handle|
+      handle.tweets.destroy_all
       12.times do |number|
         handle.tweets.create(content: "@#{handle.twitter_handle} tweet ##{number}")
       end
